@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://il4c2eptujhl"]
+
+[ext_resource type="Script" path="res://scr/actor/player/player.gd" id="1_gu4hn"]
+[ext_resource type="Script" path="res://scr/actor/player/fsm.gd" id="2_p62lt"]
+[ext_resource type="Script" path="res://scr/actor/player/state/idle.gd" id="3_qkvl6"]
+[ext_resource type="Script" path="res://scr/actor/player/state/move.gd" id="4_uur0q"]
+[ext_resource type="Script" path="res://scr/actor/player/state/statue.gd" id="5_iinq0"]
+[ext_resource type="Texture2D" uid="uid://jll18n6eij4m" path="res://icon.svg" id="6_nafs6"]
+[ext_resource type="Script" path="res://scr/actor/player/state/detected.gd" id="7_icnqe"]
+[ext_resource type="Script" path="res://scr/actor/player/state/repair.gd" id="8_4fktn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h17l3"]
+size = Vector2(10, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4p2w"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkjay"]
+size = Vector2(10, 4)
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_gu4hn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h17l3")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, -5)
+scale = Vector2(0.0625, 0.09375)
+texture = ExtResource("6_nafs6")
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource("2_p62lt")
+init_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="fsm"]
+script = ExtResource("3_qkvl6")
+
+[node name="move" type="Node" parent="fsm"]
+script = ExtResource("4_uur0q")
+
+[node name="statue" type="Node" parent="fsm"]
+script = ExtResource("5_iinq0")
+
+[node name="detected" type="Node" parent="fsm"]
+script = ExtResource("7_icnqe")
+
+[node name="repair" type="Node" parent="fsm"]
+script = ExtResource("8_4fktn")
+
+[node name="statue_active" type="Timer" parent="."]
+one_shot = true
+
+[node name="statue_cd" type="Timer" parent="."]
+one_shot = true
+
+[node name="repair_area" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="repair_area"]
+shape = SubResource("RectangleShape2D_u4p2w")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_pkjay")

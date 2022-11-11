@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://spbk1en4vpi8"]
+
+[ext_resource type="Shader" path="res://scr/tool/diamond_transition_reverse.gdshader" id="1_li80j"]
+[ext_resource type="Script" path="res://scr/tool/transitioner/opener.gd" id="2_mpgii"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wu3n"]
+shader = ExtResource("1_li80j")
+shader_parameter/diamondPixelSize = 50.0
+shader_parameter/progress = 0.0
+
+[node name="opener" type="ColorRect"]
+material = SubResource("ShaderMaterial_0wu3n")
+offset_right = 1448.0
+offset_bottom = 1613.0
+scale = Vector2(0.221024, 0.111628)
+script = ExtResource("2_mpgii")

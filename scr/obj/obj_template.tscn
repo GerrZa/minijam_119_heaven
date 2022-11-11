@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://q163u88k2clo"]
+
+[ext_resource type="Script" path="res://scr/obj/obj_template.gd" id="1_wanyq"]
+[ext_resource type="Shader" path="res://scr/obj/outline.gdshader" id="2_ebjta"]
+[ext_resource type="Texture2D" uid="uid://djqj7aki30ve4" path="res://assets/obj/prototype_obj.png" id="3_r6dea"]
+[ext_resource type="Texture2D" uid="uid://b2hpi5ai0kqbh" path="res://assets/obj/finish.png" id="4_6sqvo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otx47"]
+shader = ExtResource("2_ebjta")
+shader_parameter/add_margins = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inside = false
+shader_parameter/pattern = 1
+shader_parameter/width = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5y34"]
+size = Vector2(34, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6yu1"]
+size = Vector2(22, 12)
+
+[node name="obj_template" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_wanyq")
+repair_duration = 5.0
+repair_bar = NodePath("repair_bar_root")
+finish_repair = NodePath("repair_bar_root/finish_repair")
+repair_progress = NodePath("repair_bar_root/finish_repair/progress_bar")
+obj_sprite = NodePath("Icon")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_otx47")
+position = Vector2(0, -8)
+texture = ExtResource("3_r6dea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f5y34")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_f6yu1")
+
+[node name="repair_bar_root" type="Node2D" parent="."]
+position = Vector2(0, -26)
+
+[node name="finish_repair" type="Node2D" parent="repair_bar_root"]
+
+[node name="Polygon2D" type="Polygon2D" parent="repair_bar_root/finish_repair"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-12, 0, -12, -4, 12, -4, 12, 0)
+
+[node name="progress_bar" type="Node2D" parent="repair_bar_root/finish_repair"]
+
+[node name="Polygon2D2" type="Polygon2D" parent="repair_bar_root/finish_repair/progress_bar"]
+polygon = PackedVector2Array(-11, -1, -11, -3, 11, -3, 11, -1)
+
+[node name="finish" type="Sprite2D" parent="repair_bar_root"]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("4_6sqvo")

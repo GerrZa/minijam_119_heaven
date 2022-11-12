@@ -31,7 +31,8 @@ label_settings = SubResource("LabelSettings_1fwl5")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-visible_ratio = -0.0113636
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="DialogEndIndicator" type="Sprite2D" parent="."]
 position = Vector2(273, 169)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdf1x0k5atbxr"]
+
+[ext_resource type="Script" path="res://scr/tool/dialog/dialog_box.gd" id="1_eokxd"]
+[ext_resource type="Texture2D" uid="uid://rr15153swi73" path="res://assets/dialog/dialog_frame.png" id="1_gg4wn"]
+[ext_resource type="FontFile" uid="uid://cknfxsdxphplr" path="res://assets/dialog/Mystery Font (1).ttf" id="2_fkxn1"]
+[ext_resource type="Texture2D" uid="uid://4oo4k18x31a5" path="res://assets/dialog/dialog_end_indicator.png" id="4_xmq1l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fwl5"]
+line_spacing = 1.0
+font = ExtResource("2_fkxn1")
+font_size = 8
+font_color = Color(0.811765, 0.298039, 0.113725, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="dialog_box" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_eokxd")
+
+[node name="DialogFrame" type="Sprite2D" parent="."]
+position = Vector2(33, 123)
+texture = ExtResource("1_gg4wn")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 99.0
+offset_top = 138.0
+offset_right = 269.0
+offset_bottom = 170.0
+text = "The company has many duty that I could fit in but they put me in the repairing section!?"
+label_settings = SubResource("LabelSettings_1fwl5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_ratio = -0.0113636
+
+[node name="DialogEndIndicator" type="Sprite2D" parent="."]
+position = Vector2(273, 169)
+texture = ExtResource("4_xmq1l")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -15,6 +15,9 @@ func update(delta):
 	if player.p_input != Vector2.ZERO:
 		state_machine.transition_to("move")
 	
+	if Input.is_action_just_pressed("ui_space") and player.statue_cd.is_stopped():
+		state_machine.transition_to("statue")
+	
 	if Input.is_action_just_pressed("ui_repair") and %repair_area.get_overlapping_areas().size() > 0:
 		state_machine.transition_to("repair")
 	

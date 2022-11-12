@@ -12,12 +12,22 @@ var friction = 1
 var curr_state
 
 func _ready():
+	Global.win.connect(win)
+	
 	Global.player = self
 
 func _physics_process(delta):
+	
+	print($fsm.state)
 	
 	curr_state = $fsm.state.name
 	
 	p_input.x = Input.get_axis("ui_left","ui_right")
 	p_input.y = Input.get_axis("ui_up","ui_down")
 	
+
+func win():
+	$fsm.transition_to("win")
+
+func _exit_tree() -> void:
+	Global.player = null

@@ -8,6 +8,21 @@ shader = ExtResource("1_li80j")
 shader_parameter/diamondPixelSize = 50.0
 shader_parameter/progress = 0.0
 
+[sub_resource type="Animation" id="Animation_gqfgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_ydgpm"]
 resource_name = "open"
 length = 0.9
@@ -24,21 +39,6 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_gqfgd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lf8t7"]
 _data = {
 "RESET": SubResource("Animation_gqfgd"),
@@ -46,6 +46,7 @@ _data = {
 }
 
 [node name="opener" type="ColorRect"]
+process_mode = 3
 material = SubResource("ShaderMaterial_0wu3n")
 offset_right = 1448.0
 offset_bottom = 1613.0

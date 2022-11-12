@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://il4c2eptujhl"]
+[gd_scene load_steps=13 format=3 uid="uid://il4c2eptujhl"]
 
 [ext_resource type="Script" path="res://scr/actor/player/player.gd" id="1_gu4hn"]
 [ext_resource type="Script" path="res://scr/actor/player/fsm.gd" id="2_p62lt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://jll18n6eij4m" path="res://icon.svg" id="6_nafs6"]
 [ext_resource type="Script" path="res://scr/actor/player/state/detected.gd" id="7_icnqe"]
 [ext_resource type="Script" path="res://scr/actor/player/state/repair.gd" id="8_4fktn"]
+[ext_resource type="Script" path="res://scr/actor/player/state/win.gd" id="9_k7hih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h17l3"]
 size = Vector2(10, 4)
@@ -48,6 +49,9 @@ script = ExtResource("7_icnqe")
 
 [node name="repair" type="Node" parent="fsm"]
 script = ExtResource("8_4fktn")
+
+[node name="win" type="Node" parent="fsm"]
+script = ExtResource("9_k7hih")
 
 [node name="statue_active" type="Timer" parent="."]
 one_shot = true

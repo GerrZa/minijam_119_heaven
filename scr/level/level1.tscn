@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7hcmswth51ia"]
+[gd_scene load_steps=10 format=3 uid="uid://hon7o72qcccm"]
 
 [ext_resource type="PackedScene" uid="uid://il4c2eptujhl" path="res://scr/actor/player/player.tscn" id="1_pkcdi"]
 [ext_resource type="Script" path="res://scr/level/normal_level.gd" id="1_u4va0"]
 [ext_resource type="PackedScene" uid="uid://spbk1en4vpi8" path="res://scr/tool/transitioner/opener.tscn" id="2_7tlfs"]
 [ext_resource type="Texture2D" uid="uid://jll18n6eij4m" path="res://icon.svg" id="2_m34xg"]
+[ext_resource type="PackedScene" uid="uid://bdf1x0k5atbxr" path="res://scr/tool/dialog/dialog_box.tscn" id="3_7ahhd"]
 [ext_resource type="PackedScene" uid="uid://b4yoept1uvm6" path="res://scr/actor/npc/normal_npc/normal_npc.tscn" id="3_r2uin"]
 [ext_resource type="PackedScene" uid="uid://q163u88k2clo" path="res://scr/obj/obj_template.tscn" id="4_78wdy"]
 
@@ -276,6 +277,9 @@ script = ExtResource("1_u4va0")
 next_level = "res://scr/level/level1.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="dialog_box" parent="CanvasLayer" instance=ExtResource("3_7ahhd")]
+visible = false
 
 [node name="opener" parent="CanvasLayer" instance=ExtResource("2_7tlfs")]
 visible = false

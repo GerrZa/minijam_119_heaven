@@ -30,6 +30,7 @@ obj_sprite = NodePath("Icon")
 
 [node name="Icon" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_otx47")
+use_parent_material = true
 position = Vector2(0, -8)
 texture = ExtResource("3_r6dea")
 
@@ -44,6 +45,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_f6yu1")
 
 [node name="repair_bar_root" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -26)
 
 [node name="finish_repair" type="Node2D" parent="repair_bar_root"]

@@ -271,11 +271,16 @@ sources/0 = SubResource("TileSetAtlasSource_l3kgq")
 
 [node name="test_room" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.278431, 0.0588235, 0.0392157, 1)
+
 [node name="ysort" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="player" parent="ysort" instance=ExtResource("1_pkcdi")]
-position = Vector2(151, 93)
+position = Vector2(159, 98)
 
 [node name="normal_npc" parent="ysort" instance=ExtResource("3_r2uin")]
 position = Vector2(44, 101)
@@ -287,3 +292,6 @@ position = Vector2(163, 71)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_stl1l")
 format = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.517647, 0.647059, 1, 1)

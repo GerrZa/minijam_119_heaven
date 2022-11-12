@@ -1,28 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://spbk1en4vpi8"]
+[gd_scene load_steps=7 format=3 uid="uid://cel02rps6fpd5"]
 
-[ext_resource type="Shader" path="res://scr/tool/diamond_transition_reverse.gdshader" id="1_li80j"]
-[ext_resource type="Script" path="res://scr/tool/transitioner/opener.gd" id="2_mpgii"]
+[ext_resource type="Shader" path="res://scr/tool/diamond_transition.gdshader" id="1_3uhbq"]
+[ext_resource type="Script" path="res://scr/tool/transitioner/closer.gd" id="2_6bhwa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0wu3n"]
-shader = ExtResource("1_li80j")
+shader = ExtResource("1_3uhbq")
 shader_parameter/diamondPixelSize = 50.0
 shader_parameter/progress = 0.0
-
-[sub_resource type="Animation" id="Animation_ydgpm"]
-resource_name = "open"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1.6245, 0.707107),
-"update": 0,
-"values": [0.0, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_gqfgd"]
 length = 0.001
@@ -39,21 +23,37 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ydgpm"]
+resource_name = "close"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1.6245, 0.707107),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lf8t7"]
 _data = {
 "RESET": SubResource("Animation_gqfgd"),
-"open": SubResource("Animation_ydgpm")
+"close": SubResource("Animation_ydgpm")
 }
 
-[node name="opener" type="ColorRect"]
+[node name="closer" type="ColorRect"]
 material = SubResource("ShaderMaterial_0wu3n")
 offset_right = 1448.0
 offset_bottom = 1613.0
 scale = Vector2(0.221024, 0.111628)
-script = ExtResource("2_mpgii")
+script = ExtResource("2_6bhwa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "open"
+autoplay = "close"
 libraries = {
 "": SubResource("AnimationLibrary_lf8t7")
 }

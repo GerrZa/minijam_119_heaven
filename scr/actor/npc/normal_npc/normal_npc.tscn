@@ -20,6 +20,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ppyvy")
 
 [node name="Icon" type="Sprite2D" parent="."]
+light_mask = 0
 position = Vector2(0, -4)
 scale = Vector2(0.078125, 0.109375)
 texture = ExtResource("1_5ekn8")
@@ -60,10 +61,12 @@ polygon = PackedVector2Array(0, 0, -21, -35, -11, -39, 0, -41, 11, -39, 21, -35)
 [node name="PointLight2D" type="PointLight2D" parent="detect_area"]
 position = Vector2(21, 0)
 rotation = 1.57079
-blend_mode = 2
+color = Color(0.94902, 0.917647, 0.615686, 1)
+energy = 2.43
 texture = ExtResource("7_418s6")
 
 [node name="Sprite2D" type="Sprite2D" parent="detect_area"]
+visible = false
 position = Vector2(21, 0)
 rotation = 1.57079
 texture = ExtResource("7_418s6")

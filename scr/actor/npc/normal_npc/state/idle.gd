@@ -19,3 +19,4 @@ func physics_update(delta):
 	
 	if %RayCast2D.is_colliding() == true and %detect_area.get_overlapping_areas().size() > 0:
 		Global.emit_signal("detected")
+		state_machine.transition_to("detected")

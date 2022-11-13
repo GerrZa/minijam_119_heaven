@@ -4,6 +4,12 @@ extends PlayerState
 func physics_update(delta):
 	
 	%repair_area.get_overlapping_areas()[0].repair(delta)
+	
+	
+	player.animtree.get("parameters/playback").travel("idle")
+	
+	
+	player.statue_left += delta
 
 func update(delta):
 	

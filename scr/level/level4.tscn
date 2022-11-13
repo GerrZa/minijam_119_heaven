@@ -1,0 +1,200 @@
+[gd_scene load_steps=17 format=3 uid="uid://cmte0enbtsml4"]
+
+[ext_resource type="PackedScene" uid="uid://il4c2eptujhl" path="res://scr/actor/player/player.tscn" id="1_pkcdi"]
+[ext_resource type="Script" path="res://scr/level/normal_level.gd" id="1_u4va0"]
+[ext_resource type="PackedScene" uid="uid://spbk1en4vpi8" path="res://scr/tool/transitioner/opener.tscn" id="2_7tlfs"]
+[ext_resource type="Texture2D" uid="uid://btxqx17di3p40" path="res://assets/level/level4.png" id="2_kcnpq"]
+[ext_resource type="PackedScene" uid="uid://b4yoept1uvm6" path="res://scr/actor/npc/normal_npc/normal_npc.tscn" id="3_r2uin"]
+[ext_resource type="Script" path="res://scr/obj/obj_template.gd" id="7_csclv"]
+[ext_resource type="Shader" path="res://scr/obj/outline.gdshader" id="8_gkay7"]
+[ext_resource type="Texture2D" uid="uid://bc001quroh667" path="res://assets/obj/tv.png" id="8_n8fwa"]
+[ext_resource type="Texture2D" uid="uid://b2hpi5ai0kqbh" path="res://assets/obj/finish.png" id="10_rxgia"]
+[ext_resource type="Texture2D" uid="uid://badp1bj4vw0nj" path="res://assets/obj/vacuum.png" id="11_g4yfg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otx47"]
+shader = ExtResource("8_gkay7")
+shader_parameter/add_margins = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inside = false
+shader_parameter/pattern = 1
+shader_parameter/width = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5y34"]
+size = Vector2(38, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6yu1"]
+size = Vector2(22, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oeqp"]
+shader = ExtResource("8_gkay7")
+shader_parameter/add_margins = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inside = false
+shader_parameter/pattern = 1
+shader_parameter/width = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv2ik"]
+size = Vector2(42, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iejkq"]
+size = Vector2(28, 16)
+
+[node name="test_room" type="Node2D"]
+script = ExtResource("1_u4va0")
+next_level = "res://scr/level/level5.tscn"
+
+[node name="Level1" type="Sprite2D" parent="."]
+texture = ExtResource("2_kcnpq")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level1"]
+collision_layer = 34
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1/StaticBody2D"]
+polygon = PackedVector2Array(144, 144, 144, 128, 96, 128, 96, 192, 144, 192, 144, 176, 224, 176, 224, 256, 272, 256, 272, 176, 352, 176, 352, 144, 272, 144, 272, 128, 304, 128, 304, 96, 272, 96, 272, 48, 224, 48, 224, 144, 160, 144, 168, 0, 496, 0, 504, 288, 0, 280, 0, 0, 168, 0, 160, 144)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="opener" parent="CanvasLayer" instance=ExtResource("2_7tlfs")]
+visible = false
+
+[node name="ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="player" parent="ysort" instance=ExtResource("1_pkcdi")]
+position = Vector2(248, 164)
+
+[node name="Camera2D" type="Camera2D" parent="ysort/player"]
+position = Vector2(38, 15)
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 502
+limit_bottom = 282
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="normal_npc" parent="ysort" instance=ExtResource("3_r2uin")]
+position = Vector2(339, 162)
+path_in_order = [Vector2(339, 162), Vector2(277, 162)]
+last_direction_anim = Vector2(0, -1)
+
+[node name="normal_npc3" parent="ysort" instance=ExtResource("3_r2uin")]
+position = Vector2(247, 78)
+path_in_order = [Vector2(247, 78), Vector2(247, 129)]
+last_direction_anim = Vector2(0, -1)
+
+[node name="normal_npc4" parent="ysort" instance=ExtResource("3_r2uin")]
+position = Vector2(248, 248)
+path_in_order = [Vector2(248, 248), Vector2(248, 210)]
+last_direction_anim = Vector2(0, -1)
+
+[node name="normal_npc2" parent="ysort" instance=ExtResource("3_r2uin")]
+position = Vector2(166, 162)
+path_in_order = [Vector2(166, 162), Vector2(224, 162)]
+last_direction_anim = Vector2(0, -1)
+
+[node name="obj_template" type="Area2D" parent="ysort"]
+position = Vector2(118, 161)
+collision_layer = 36
+script = ExtResource("7_csclv")
+repair_duration = 7.0
+repair_bar = NodePath("repair_bar_root")
+finish_repair = NodePath("repair_bar_root/finish_repair")
+repair_progress = NodePath("repair_bar_root/finish_repair/progress_bar")
+obj_sprite = NodePath("Icon")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="ysort/obj_template"]
+material = SubResource("ShaderMaterial_otx47")
+use_parent_material = true
+position = Vector2(0, -8)
+texture = ExtResource("8_n8fwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ysort/obj_template"]
+shape = SubResource("RectangleShape2D_f5y34")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ysort/obj_template"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ysort/obj_template/StaticBody2D"]
+shape = SubResource("RectangleShape2D_f6yu1")
+
+[node name="repair_bar_root" type="Node2D" parent="ysort/obj_template"]
+visible = false
+position = Vector2(0, -26)
+
+[node name="finish_repair" type="Node2D" parent="ysort/obj_template/repair_bar_root"]
+
+[node name="Polygon2D" type="Polygon2D" parent="ysort/obj_template/repair_bar_root/finish_repair"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-12, 0, -12, -4, 12, -4, 12, 0)
+
+[node name="progress_bar" type="Node2D" parent="ysort/obj_template/repair_bar_root/finish_repair"]
+
+[node name="Polygon2D2" type="Polygon2D" parent="ysort/obj_template/repair_bar_root/finish_repair/progress_bar"]
+polygon = PackedVector2Array(-11, -1, -11, -3, 11, -3, 11, -1)
+
+[node name="finish" type="Sprite2D" parent="ysort/obj_template/repair_bar_root"]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("10_rxgia")
+
+[node name="obj_template2" type="Area2D" parent="ysort"]
+position = Vector2(285, 112)
+collision_layer = 36
+script = ExtResource("7_csclv")
+repair_duration = 4.5
+repair_bar = NodePath("repair_bar_root")
+finish_repair = NodePath("repair_bar_root/finish_repair")
+repair_progress = NodePath("repair_bar_root/finish_repair/progress_bar")
+obj_sprite = NodePath("Icon")
+
+[node name="Icon" type="Sprite2D" parent="ysort/obj_template2"]
+material = SubResource("ShaderMaterial_2oeqp")
+use_parent_material = true
+position = Vector2(0, -8)
+texture = ExtResource("11_g4yfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ysort/obj_template2"]
+shape = SubResource("RectangleShape2D_pv2ik")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ysort/obj_template2"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ysort/obj_template2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_iejkq")
+
+[node name="repair_bar_root" type="Node2D" parent="ysort/obj_template2"]
+visible = false
+position = Vector2(0, -26)
+
+[node name="finish_repair" type="Node2D" parent="ysort/obj_template2/repair_bar_root"]
+
+[node name="Polygon2D" type="Polygon2D" parent="ysort/obj_template2/repair_bar_root/finish_repair"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-12, 0, -12, -4, 12, -4, 12, 0)
+
+[node name="progress_bar" type="Node2D" parent="ysort/obj_template2/repair_bar_root/finish_repair"]
+
+[node name="Polygon2D2" type="Polygon2D" parent="ysort/obj_template2/repair_bar_root/finish_repair/progress_bar"]
+polygon = PackedVector2Array(-11, -1, -11, -3, 11, -3, 11, -1)
+
+[node name="finish" type="Sprite2D" parent="ysort/obj_template2/repair_bar_root"]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("10_rxgia")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.517647, 0.647059, 1, 1)
+
+[node name="win_area" type="Area2D" parent="."]
+collision_layer = 0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="win_area"]
+polygon = PackedVector2Array(230, 139, 267, 139, 267, 185, 230, 185)

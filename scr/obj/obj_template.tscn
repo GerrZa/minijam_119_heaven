@@ -14,13 +14,13 @@ shader_parameter/pattern = 1
 shader_parameter/width = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5y34"]
-size = Vector2(34, 22)
+size = Vector2(38, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6yu1"]
 size = Vector2(22, 12)
 
 [node name="obj_template" type="Area2D"]
-collision_layer = 4
+collision_layer = 36
 script = ExtResource("1_wanyq")
 repair_duration = 5.0
 repair_bar = NodePath("repair_bar_root")

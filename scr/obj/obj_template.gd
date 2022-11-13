@@ -10,6 +10,9 @@ var repair_percentage = 0
 @export_node_path(Node2D) var repair_progress
 @export_node_path(Sprite2D) var obj_sprite
 
+func _ready() -> void:
+	add_to_group("obj")
+
 func _physics_process(delta):
 	
 	get_node(repair_bar).visible = get_overlapping_bodies().size() != 0

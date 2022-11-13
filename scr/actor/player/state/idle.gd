@@ -10,6 +10,9 @@ func enter(msg:={}):
 	can_detected = true
 	Global.detected.connect(get_detected)
 
+func physics_update(delta):
+	player.statue_left += delta
+
 func update(delta):
 	
 	if player.p_input != Vector2.ZERO:
@@ -21,6 +24,7 @@ func update(delta):
 	if Input.is_action_just_pressed("ui_repair") and %repair_area.get_overlapping_areas().size() > 0:
 		state_machine.transition_to("repair")
 	
+	player.animtree.get("parameters/playback").travel("idle")
 
 func get_detected():
 	state_machine.transition_to("detected")

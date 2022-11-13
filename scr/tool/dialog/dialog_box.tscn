@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdf1x0k5atbxr"]
+[gd_scene load_steps=7 format=3 uid="uid://bdf1x0k5atbxr"]
 
 [ext_resource type="Script" path="res://scr/tool/dialog/dialog_box.gd" id="1_eokxd"]
 [ext_resource type="Texture2D" uid="uid://rr15153swi73" path="res://assets/dialog/dialog_frame.png" id="1_gg4wn"]
 [ext_resource type="FontFile" uid="uid://cknfxsdxphplr" path="res://assets/dialog/Mystery Font (1).ttf" id="2_fkxn1"]
 [ext_resource type="Texture2D" uid="uid://4oo4k18x31a5" path="res://assets/dialog/dialog_end_indicator.png" id="4_xmq1l"]
+[ext_resource type="AudioStream" uid="uid://cnisdgfdstmhi" path="res://assets/sfx/dialog_sfx_edit.wav" id="5_exybi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1fwl5"]
 line_spacing = 1.0
@@ -40,3 +41,7 @@ texture = ExtResource("4_xmq1l")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_exybi")
+volume_db = -1.691

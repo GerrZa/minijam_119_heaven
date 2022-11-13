@@ -289,7 +289,7 @@ color = Color(0.278431, 0.0588235, 0.0392157, 1)
 y_sort_enabled = true
 
 [node name="player" parent="ysort" instance=ExtResource("1_pkcdi")]
-position = Vector2(100, 140)
+position = Vector2(163, 87)
 
 [node name="normal_npc" parent="ysort" instance=ExtResource("3_r2uin")]
 position = Vector2(44, 101)

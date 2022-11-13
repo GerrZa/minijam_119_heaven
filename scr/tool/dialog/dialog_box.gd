@@ -1,7 +1,7 @@
 extends Node2D
 
 var dialog_content = [
-	"Ughh, I why do people keep wishing that their home appliances will be repaired.",
+	"Ughh, why do people keep wishing that their home appliances will be repaired.",
 	"The company has many duties that I could fit in but they put me in the repairing section!?",
 	"Anyway.",
 	"Let's see how can I sneak in and repair those electronic thingy without getting caught."
@@ -80,6 +80,8 @@ func run_dialog():
 	
 	while $Label.visible_characters < $Label.text.length():
 		$Label.visible_characters += 1
+		
+		$AudioStreamPlayer2D.play()  
 		
 		$Timer.start(cd_per_letter)
 		await $Timer.timeout

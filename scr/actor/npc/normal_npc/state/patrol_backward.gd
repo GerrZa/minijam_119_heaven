@@ -14,6 +14,8 @@ func physics_update(delta):
 	
 	owner.move_and_slide()
 	
-	if %RayCast2D.is_colliding() == true and %detect_area.get_overlapping_areas().size() > 0:
+	if %RayCast2D.is_colliding() == true and %detect_area.get_overlapping_areas().size() > 0 and %RayCast2D.get_collider().owner is Player:
 		Global.emit_signal("detected")
 		state_machine.transition_to("detected")
+	
+	$"../../npc_sprite/AnimationTree".get("parameters/playback").travel("run")

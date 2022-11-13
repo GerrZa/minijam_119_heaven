@@ -55,6 +55,9 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1/StaticBody2D"]
 polygon = PackedVector2Array(112, 0, 112, 160, 32, 160, 32, 240, 80, 240, 80, 192, 112, 192, 112, 256, 416, 256, 416, 128, 464, 128, 464, 80, 416, 80, 416, 48, 112, 48, 112, 0, 504, 0, 504, 288, -8, 288, -8, 0)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level1/StaticBody2D"]
+polygon = PackedVector2Array(224, 128, 224, 176, 304, 176, 304, 128)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="opener" parent="CanvasLayer" instance=ExtResource("2_7tlfs")]

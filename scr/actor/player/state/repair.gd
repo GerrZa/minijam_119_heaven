@@ -18,3 +18,6 @@ func update(delta):
 			state_machine.transition_to("move")
 		else:
 			state_machine.transition_to("idle")
+	
+	if Input.is_action_just_pressed("ui_space"): 
+		state_machine.transition_to("statue")
